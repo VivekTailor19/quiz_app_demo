@@ -10,9 +10,10 @@ class HomeScreen extends StatefulWidget {
 List qusList = [
   "Surat is the second cleanest city after Indore.",
   "Shivaji was born in the hill-fort of Shivneri.",
+  "Vidit Savaliya is the producers of Hera Pheri 3 film",
   "Brahmaputra river is biggest river in the world.",
   "Sardar Patel born in Porbandar.",
-  "Vidit Savaliya is the producers of Hera Pheri 3 film",
+
     ];
 List ansList = [
   true,true,false,false,false
@@ -43,9 +44,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
             )),
         alignment: Alignment.topCenter,
-        child: Column(mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
 
           children: [
+            SizedBox(height: 50),
             Text("Question ${i+1}",style: TextStyle(fontSize: 50,color: Colors.pinkAccent)),
             SizedBox(height: 70),
             Text("${qusList[i]}",style: TextStyle(fontSize: 20,color: Colors.lightBlueAccent)),
@@ -53,51 +55,16 @@ class _HomeScreenState extends State<HomeScreen> {
             Row(mainAxisAlignment: MainAxisAlignment.center,
               children: [
               TextButton(onPressed: (){
-                setState(() {
-
-                          if(i < qusList.length -1 )
-                          {
-                            i++;
-                          }
-                          if(i<qusList.length)
-                            {
-                              userInput.add(true);
-                              j = i +1;
-                            }
-
-
-
-                }
-                );
-
-              }, child: Text("✔ True",style: TextStyle(fontSize: 20 ,color: Colors.amberAccent))),
-
+                update(true);
+              }, child: Text(" ✔ True ✔ ",style: TextStyle(fontSize: 20 ,color: Colors.amberAccent))),
+              SizedBox(width: 200),
               TextButton(onPressed: (){
-                setState(() {
-
-                  if(i < qusList.length -1 )
-                  {
-                   // print("$i");
-                    //userInput.add(false);
-                   // print(userInput);
-                    i++;
-                  }
-                  if(i<qusList.length)
-                  {
-                   // print("$i \t");
-                    userInput.add(false);
-                   // print(userInput);
-                    j = i +1;
-                  }
-                 // print("\t i= $i ");
-                }
-                );
-
-              }, child: Text("❌ False",style: TextStyle(fontSize: 20,color: Colors.amberAccent)))
+                update(false);
+              }, child: Text(" ❌ False ❌ ",style: TextStyle(fontSize: 20,color: Colors.amberAccent)))
             ],),
             SizedBox(height: 50),
             Visibility(
-              visible:j>=5?true:false,
+              visible: userInput.length == 5 ? true : false,
               child: IconButton(onPressed: () {
                       setState(() {
                         print("answer = $ansList  user =  $userInput");
@@ -109,11 +76,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           }
                         }
                         print(count);
+                        Navigator.pushNamed(context, 'result' ,arguments: count);
                       });
               },icon: Icon(Icons.exit_to_app_rounded),color: Colors.tealAccent,iconSize: 50,)
-            ),
+                ),
             // Visibility(
-            //     visible:j==5 ? true : false,
+            //     visible: userInput.length == 5 ? true : false,
             //     child: Text("You Scored ${count} ",style: TextStyle(fontSize: 30,color: Colors.orangeAccent),)
             // ),
 
@@ -123,6 +91,22 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+  void update(bool click)
+  {
+    setState(() {
+      if(i < qusList.length -1 )
+      {
+        i++;
+      }
+      if(i<qusList.length)
+      {
+        userInput.add(click);
+        print(userInput);
+        j = i +1;
+      }
+    });
+
   }
 }
 
