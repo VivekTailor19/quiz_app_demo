@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         press++;
 
 
-                        //Navigator.pushNamed(context, 'result' ,arguments: count);
+                        Navigator.pushNamed(context, 'result' ,arguments: count);
 
               },icon: Icon(Icons.exit_to_app_rounded),color: Colors.tealAccent,iconSize: 50,)
                 ),
