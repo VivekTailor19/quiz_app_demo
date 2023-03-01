@@ -13,7 +13,6 @@ List qusList = [
   "Vidit Savaliya is the producers of Hera Pheri 3 film",
   "Brahmaputra river is biggest river in the world.",
   "Sardar Patel born in Porbandar.",
-
     ];
 List ansList = [
   true,true,false,false,false
