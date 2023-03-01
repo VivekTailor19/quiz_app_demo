@@ -8,35 +8,40 @@ class Result extends StatefulWidget {
 }
 
 class _ResultState extends State<Result> {
-  
   @override
   Widget build(BuildContext context) {
-    
-   dynamic count =  ModalRoute.of(context)!.settings.arguments ;
-    
+
+    dynamic count = ModalRoute.of(context)!.settings.arguments;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff0D1931),
         title: Text("\$\$\$\$\$",
-            style: TextStyle(letterSpacing: 20, fontSize: 25,color: Colors.tealAccent)),
+            style: TextStyle(
+                letterSpacing: 20, fontSize: 25, color: Colors.tealAccent)),
         centerTitle: true,
       ),
-    body: Container(
+      body: Container(
         decoration: BoxDecoration(
-        image: DecorationImage(
-        image: AssetImage(
-        "Images/background.jpg"),
-        fit: BoxFit.fill,
-        opacity: 10,
+            image: DecorationImage(
+          image: AssetImage("Images/background.jpg"),
+          fit: BoxFit.fill,
+          opacity: 10,
         )),
         alignment: Alignment.center,
+        child: Column(children: [
+          Text(
+            "You Scored $count.",
+            style: TextStyle(color: Colors.redAccent , fontSize: 60),
+          ),
+          ElevatedButton(onPressed: () {
+            setState(() {
+              Navigator.pushReplacementNamed(context, '/');
+            });
 
-        child: Text("You Scored $count.",style: TextStyle(color: Colors.redAccent,fontSize: 75),),
-        ),
-
-
-
-
+          }, child: Icon(Icons.home_sharp))
+        ],)
+      ),
     );
   }
 }

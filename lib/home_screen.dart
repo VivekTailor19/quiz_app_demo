@@ -20,7 +20,8 @@ List ansList = [
 ];
 List userInput = [];
 int i = 0 ;
-int j = 0;
+int j = 0 ;
+int press = 0;
 int count = 0;
 
 
@@ -66,26 +67,32 @@ class _HomeScreenState extends State<HomeScreen> {
             Visibility(
               visible: userInput.length == 5 ? true : false,
               child: IconButton(onPressed: () {
-                      setState(() {
+                        count = 0;
                         print("answer = $ansList  user =  $userInput");
                         for(i=0;i<5;i++)
                         {
                           if(ansList[i]==userInput[i])
                           {
-                            count++;
+                            setState(() {
+                              count++;
+                            });
+
                           }
                         }
-                        print(count);
-                        Navigator.pushNamed(context, 'result' ,arguments: count);
-                      });
+                        press++;
+
+
+                        //Navigator.pushNamed(context, 'result' ,arguments: count);
+
               },icon: Icon(Icons.exit_to_app_rounded),color: Colors.tealAccent,iconSize: 50,)
                 ),
             // Visibility(
-            //     visible: userInput.length == 5 ? true : false,
-            //     child: Text("You Scored ${count} ",style: TextStyle(fontSize: 30,color: Colors.orangeAccent),)
+            //     visible: ( press == 1 ) ? true : false,
+            //     child: Text("You Scored $count",style: TextStyle(fontSize: 30,color: Colors.orangeAccent),)
             // ),
+            // Text('$count',style: TextStyle(fontSize: 30,color: Colors.red),),
 
-
+            Text('$count',style: TextStyle(fontSize: 30,color: Colors.red),),
             ],
 
         ),
@@ -103,8 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
       {
         userInput.add(click);
         print(userInput);
-        j = i +1;
+       // j = i +1;
+
       }
+
     });
 
   }
