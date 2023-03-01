@@ -22,6 +22,7 @@ int i = 0 ;
 int j = 0 ;
 int press = 0;
 int count = 0;
+int a = 0;
 
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -73,15 +74,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           if(ansList[i]==userInput[i])
                           {
                             setState(() {
-                              count++;
+                               count++;
                             });
-
                           }
                         }
+                        print("count  = $count  a =  $a");
+
                         press++;
 
-
-                        Navigator.pushNamed(context, 'result' ,arguments: count);
+                        // Navigator.pushNamed(context, 'result' ,arguments: count);
 
               },icon: Icon(Icons.exit_to_app_rounded),color: Colors.tealAccent,iconSize: 50,)
                 ),
@@ -89,9 +90,10 @@ class _HomeScreenState extends State<HomeScreen> {
             //     visible: ( press == 1 ) ? true : false,
             //     child: Text("You Scored $count",style: TextStyle(fontSize: 30,color: Colors.orangeAccent),)
             // ),
-            // Text('$count',style: TextStyle(fontSize: 30,color: Colors.red),),
-
             Text('$count',style: TextStyle(fontSize: 30,color: Colors.red),),
+
+
+
             ],
 
         ),
@@ -110,7 +112,6 @@ class _HomeScreenState extends State<HomeScreen> {
         userInput.add(click);
         print(userInput);
        // j = i +1;
-
       }
 
     });
